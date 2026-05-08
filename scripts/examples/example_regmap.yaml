@@ -1,0 +1,79 @@
+# SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+#
+# Example register map. Mirrors the layout used by rtl/axi4lite_top.sv
+# so the generator output is directly comparable to the hand-written
+# reference. Run from the repo root:
+#
+#     python3 scripts/regmap_gen.py scripts/examples/example_regmap.yaml \
+#         --sv /tmp/example_regmap.sv --header /tmp/example_regmap.h
+#
+# The generated SV instantiates `axi4lite_slave` (the engine in
+# rtl/axi4lite_slave.sv) with the right REG_ATTR / REG_RESET parameters;
+# the generated C header is what software drivers include.
+
+name: example_block
+addr_width: 8
+data_width: 32
+
+registers:
+  - name: CTRL
+    offset: 0x00
+    attr: RW
+    reset: 0
+    fields:
+      - name: START
+        bits: [0, 0]
+      - name: SOFT_RESET
+        bits: [1, 1]
+
+  - name: STATUS
+    offset: 0x04
+    attr: RO
+    fields:
+      - name: BUSY
+        bits: [0, 0]
+      - name: DONE
+        bits: [1, 1]
+      - name: ERR
+        bits: [2, 2]
+
+  - name: IRQ_STAT
+    offset: 0x08
+    attr: W1C
+    fields:
+      - name: DONE_IRQ
+        bits: [0, 0]
+      - name: ERR_IRQ
+        bits: [1, 1]
+      - name: OVF_IRQ
+        bits: [2, 2]
+
+  - name: IRQ_MASK
+    offset: 0x0C
+    attr: RW
+    reset: 0
+
+  - name: SCRATCH0
+    offset: 0x10
+    attr: RW
+    reset: 0xDEADBEEF
+
+  - name: SCRATCH1
+    offset: 0x14
+    attr: RW
+    reset: 0
+
+  - name: ID
+    offset: 0x18
+    attr: RO
+    reset: 0xA1C4017E
+
+  - name: VERSION
+    offset: 0x1C
+    attr: RO
+    reset: 0x00010000
+
+  - name: EVENT_CNT
+    offset: 0x20
+    attr: RC
+    reset: 0
