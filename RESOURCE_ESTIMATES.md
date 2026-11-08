@@ -1,6 +1,8 @@
 # Resource estimates
 
-Numbers below are from Yosys 0.x generic synthesis (`make synth_report`).
+> **Unverified estimates.** The figures in this file have not been confirmed by a recorded, reproducible synthesis run or by hardware measurement. Treat every LUT, FF, BRAM, DSP, Fmax, throughput, latency and power figure here as an unverified estimate. Run `make synth_report` with your own toolchain to get real numbers.
+
+Numbers below are unverified estimates, not output from a recorded Yosys run (`make synth_report`).
 They are pre-place-and-route. See `SYNTH_REPORT.md` for the most recent
 run; this document explains what dominates the area and how to shrink
 it.
@@ -16,8 +18,7 @@ it.
 | Gowin GW1NR-9 (Tang Nano 9K)   | Not characterised here. Comparable to ECP5 with vendor flow. |
 
 For exact LUT/FF/BRAM numbers run `make synth_report` and read
-`SYNTH_REPORT.md`. The synthesis-comparison report is regenerated on
-every CI build.
+`SYNTH_REPORT.md`. There is no CI build in this repository.
 
 ## What dominates the area
 
@@ -48,8 +49,8 @@ generic synth. With vendor-flow LUTRAM packing the LUT count drops to
 * **Use BRAM-mapped storage** for very-wide register banks (NUM_REGS
   > 256). The shipped regfile is intentionally flat-FF for fast,
   visible storage, which is the right choice up to ~64 registers.
-  Beyond that, a BRAM-backed variant is cheaper; that variant is on
-  the Premium roadmap.
+  Beyond that, a BRAM-backed variant would likely be cheaper; no such
+  variant is shipped.
 * **Drop unused attribute paths**. If your application has only RW
   registers (the common case), the synthesizer prunes the W1C and RC
   branches automatically. The shipped regfile compiles down to a
@@ -60,10 +61,10 @@ generic synth. With vendor-flow LUTRAM packing the LUT count drops to
 
 ## What you can do to push throughput
 
-The slave's max bandwidth is one transaction per cycle on each
-channel (AW + W collapse into one transaction). At 100 MHz with
-32-bit data that is 400 MB/s on the write side and 400 MB/s on the
-read side — far more than typical control-bus traffic. There is no
+The slave's intended max bandwidth is one transaction per cycle on
+each channel (AW + W collapse into one transaction; not verified). At
+100 MHz with 32-bit data that would be 400 MB/s on the write side and
+400 MB/s on the read side (unverified estimate) — far more than typical control-bus traffic. There is no
 performance gain from pipelining a 1-cycle-latency slave; AXI4-Lite is
 designed for exactly this.
 
@@ -72,6 +73,8 @@ For a high-bandwidth data path, do NOT use AXI4-Lite. Use full AXI4
 interface, not a DMA target.
 
 ## Frequency
+
+Unverified estimates; no timing analysis has been recorded.
 
 * iCE40 UP5K, default toolchain (Yosys + nextpnr), no constraints:
   ~80-100 MHz typical (limited by the regfile read mux depth).
@@ -83,11 +86,11 @@ interface, not a DMA target.
 The handshake FSM has no critical path; the regfile read-mux is the
 limiter, and it scales as `O(log NUM_REGS)`. For NUM_REGS <= 64 the
 mux fits in 2 LUT levels and frequency is essentially unlimited by
-the slave.
+the slave (unverified).
 
 ## Power
 
-Ballpark: 2-4 mW dynamic on iCE40 UP5K at 50 MHz, depending on bus
+Unverified estimate: 2-4 mW dynamic on iCE40 UP5K at 50 MHz, depending on bus
 activity. The regfile only toggles during a write; reads are
 combinational. Static power is dominated by the FPGA itself.
 

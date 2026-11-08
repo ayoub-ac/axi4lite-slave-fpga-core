@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Top-level testbench wrapper for axi4lite_top. Stimulus from
 // tb/sim_main.cpp drives the AXI master pins directly.

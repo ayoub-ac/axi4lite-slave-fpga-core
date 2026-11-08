@@ -2,6 +2,8 @@
 
 This IP core is dual-licensed.
 
+SPDX-License-Identifier expression: `GPL-3.0-or-later OR LicenseRef-Commercial`
+
 ## GPL-3.0-or-later (open-source use)
 
 Copyright (C) 2026 Ayoub Achour
@@ -12,7 +14,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-The full GPL-3.0 text is canonical and lives at the FSF link above. A copy is available for convenience: <https://www.gnu.org/licenses/gpl-3.0.txt>.
+The full GPL-3.0 text is in [COPYING](COPYING).
 
 **What this means in practice**: if you use this RTL in a project, the project itself (including any FPGA bitstream produced from it) must also be released under GPL-3.0-or-later. The GPL is "viral" — your downstream users must receive the same rights you received, including the right to the complete corresponding source.
 
@@ -26,15 +28,14 @@ The commercial license:
 
 - removes the GPL viral requirement,
 - grants you (and your company) the right to integrate the core into closed-source products,
-- gives you a clear, written grant you can show to your customers and to a due-diligence auditor,
-- includes a 1-year fix window on bugs and clarifications.
+- gives you a clear, written grant you can show to your customers and to a due-diligence auditor.
 
-Pricing tiers and the purchase link are listed at the project page (see the URL in the README citation block). For tier inquiries, email the address listed in the project page.
+Commercial licenses are available on request: open a GitHub issue titled 'Commercial license request'. Do not post confidential details in the issue. Any commercial license is provided as is, without warranty, support or maintenance. This core is unverified (see README).
 
 ## Trademarks
 
-"AXI" and "AMBA" are registered trademarks of Arm Limited in the EU and other jurisdictions. The AXI4-Lite specification is published by Arm under a public license that permits unencumbered implementation and distribution of conforming RTL (ARM IHI 0022 specification). No trademark claim is made on those names. You may freely state that this core implements ARM AMBA AXI4-Lite in your product documentation.
+AMBA and AXI are trademarks or registered trademarks of Arm Limited. This project is not affiliated with or endorsed by Arm. This core is intended to implement the AXI4-Lite protocol described in ARM IHI 0022; compliance is not verified. Check Arm's own specification license terms before relying on them. No trademark claim is made on those names.
 
 ## Patents
 
-To the best of the author's knowledge, the AXI4-Lite handshake protocol is unencumbered by patents in the United States or the European Union as of 2026. Arm publishes the spec for free implementation under standard FRAND terms; no assertion of patent rights against conforming implementations is known. The author makes no warranty about patent freedom in other jurisdictions; if you ship hardware globally you are responsible for your own patent due diligence.
+The author has not performed a patent search for the AXI4-Lite handshake protocol and makes no statement or warranty about patent freedom in any jurisdiction; if you ship hardware you are responsible for your own patent due diligence.

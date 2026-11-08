@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Example top wrapping axi4lite_slave with a representative register
 // map. Use this as a starting point for wrapping any of the sibling IP

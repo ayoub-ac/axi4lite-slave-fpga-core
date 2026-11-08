@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+# SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 #
 # Example register map. Mirrors the layout used by rtl/axi4lite_top.sv
 # so the generator output is directly comparable to the hand-written

@@ -156,7 +156,7 @@ so the Yosys numbers should be read as upper bounds.
 * No BRAM is required: the register file is implemented as discrete
   flip-flops so the values are visible on \`reg_storage_o\` for the
   user logic. A BRAM-mapped variant for very-wide register banks
-  (NUM_REGS > 256) is on the Premium roadmap.
+  (NUM_REGS > 256) is not shipped.
 * Vivado / Quartus rows are skipped automatically when those tools are
   not on PATH; on a CI runner with WebPACK / Web Edition installed they
   will be populated from a real synth_design / quartus_sh run.

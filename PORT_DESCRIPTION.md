@@ -1,7 +1,8 @@
 # Port description
 
 Detailed handshake protocol and timing for the AXI4-Lite slave
-(`axi4lite_top`, `axi4lite_slave`, `axi4lite_regfile`).
+(`axi4lite_top`, `axi4lite_slave`, `axi4lite_regfile`). The behaviour
+and cycle counts below describe design intent; they are not verified.
 
 ## Reset
 
@@ -155,6 +156,8 @@ consistent snapshot for the cycle it AR-accepts.
 | `rd_event_addr_o`    | out | Address of the registered read-event (valid alongside `rd_event_o`)       |
 
 ## Latency summary
+
+Intended latencies; not verified.
 
 | Phase                                    | Cycles                |
 |------------------------------------------|-----------------------|

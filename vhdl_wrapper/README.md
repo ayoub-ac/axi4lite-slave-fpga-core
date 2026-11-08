@@ -8,13 +8,11 @@ it from a VHDL design that does not want to touch SystemVerilog directly.
 
 **Wrapper only.** The slave protocol engine and the parametrizable
 register file both live in `rtl/*.sv` and are instantiated as a
-SystemVerilog black-box. Mixed-language elaboration is supported by
-every commercial simulator and synthesiser the core has been tested
-against.
+SystemVerilog black-box. Mixed-language elaboration is intended to work
+with common commercial simulators and synthesisers; it has not been
+tested.
 
-A pure VHDL re-implementation of the datapath is on the roadmap (Premium
-tier, scope: parity with `rtl/axi4lite_top.sv` including the same
-testbench checks). Until then, treat this directory as a binding layer,
+A pure VHDL re-implementation of the datapath is not shipped. Treat this directory as a binding layer,
 not as a second implementation.
 
 ## Usage
@@ -111,8 +109,8 @@ end architecture;
 
 ## What this wrapper does NOT change
 
-* Latency, throughput, area: identical to `axi4lite_top.sv`. There is
-  no additional pipeline stage. Per transaction: 1 cycle B latency
+* Latency, throughput, area: intended to be identical to `axi4lite_top.sv`
+  (not verified). There is no additional pipeline stage. Per transaction: 1 cycle B latency
   after AW + W; 1 cycle from AR-accept to R presented.
 * Endianness: per AXI4-Lite §A8.1.1, byte 0 of the data lives at bits
   `[7:0]` (little-endian on the 32-bit data bus). WSTRB[0] gates byte 0.

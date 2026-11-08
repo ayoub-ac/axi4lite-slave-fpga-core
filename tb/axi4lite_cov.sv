@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Functional coverage for axi4lite_top. Sticky bins recorded across the
 // regression so the harness prints a single coverage line at end-of-test.

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later OR Commercial
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // AXI4-Lite slave protocol assertions (ARM IHI 0022 §A3 + §B.1).
 //
